@@ -1,0 +1,247 @@
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+  --primary:#1d4ed8;
+  --secondary:#4338ca;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(-45deg, #e1ffff, #84b5ff);
+  animation: gradientMove 5s ease infinite;
+  overflow-x: hidden;
+  transition:all .5s linear;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+header{
+    box-shadow:inset 0 -1px 0 0 rgba(0,0,0,0.2);
+    transition: all .5s;
+    border-radius: 3rem;
+}
+.navbar-white{
+  @apply bg-white dark:bg-dark
+}
+.up{
+    transform: translateY(-5.6rem)
+}
+.navbar-fixed{
+    @apply fixed z-[9998] ;
+    backdrop-filter: blur(10px);
+  }
+  .opacity{
+    opacity: .5
+}
+.hamburger-line{
+    @apply w-[30px] h-[2px] my-2 block bg-dark;
+}
+
+#hamburger.hamburger-active > span:nth-child(1){
+    @apply rotate-45 origin-top-left
+}
+#hamburger.hamburger-active > span:nth-child(3){
+    @apply -rotate-45 origin-bottom-left
+}
+#hamburger.hamburger-active > span:nth-child(2){
+    @apply scale-0
+}
+#name{
+  font-family: tahoma;
+      background: linear-gradient(-45deg, red, blue);
+    color: transparent;
+    background-clip: text;
+    background-size: 400% 400%;
+    animation: gradientMove 5s infinite alternate;
+    transition: .5s ease;
+}
+#name:hover{
+    transform:  scale(1.2);
+    @apply text-blue-800 animate-pulse duration-300 
+}
+
+/* Card */
+.flip-card {
+  transform: translateY(2rem);
+  background-color: transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin: 2rem auto;
+  font-family: Arial;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  will-change: transform;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 35px;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: transparent;
+    color: black;
+    overflow: hidden;
+}
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateY(180deg) translateY(-2rem);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #1d4ed8;
+  background: url('../img/webtek.jpeg') center no-repeat;
+  background-size:cover;
+}
+
+/* Animasi wave bergerak */
+.wave-motion {
+  animation: waveMotionUp 12s alternate infinite;
+}
+.wave-flip {
+   animation: waveMotionDown 12s alternate-reverse infinite;
+}
+@keyframes waveMotionUp {
+  0% {
+    fill: var(--secondary);
+    transform: translateX(0);
+  }
+  100% {
+    fill: var(--primary);
+    transform: translateX(-50%);
+  }
+}
+@keyframes waveMotionDown {
+  0% {
+    fill: var(--primary);
+    transform: scaleY(-1) translateX(0);
+  }
+  100% {
+    fill: var(--secondary);
+    transform: scaleY(-1) translateX(-50%);
+  }
+}
+
+#dark-toggle:checked ~ label div.toggle-circle{
+  @apply translate-x-3
+}
+
+body {
+  position: relative;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -199999;
+  transition: opacity 1s ease;
+}
+
+body::before {
+  background: linear-gradient(-45deg, #e1ffff, #84b5ff);
+  opacity: 1;
+  background-size: 400% 400%;
+
+  animation: gradientMove 5s infinite alternate;
+}
+
+body::after {
+  background: linear-gradient(-45deg, #070068, #000000);
+  opacity: 0;
+  background-size: 400% 400%;
+
+  animation: gradientMove 5s infinite alternate;
+}
+
+/* Saat dark mode (misalnya body.dark) */
+body.dark::before {
+  opacity: 0;
+  background-size: 400% 400%;
+
+  animation: gradientMove 5s infinite alternate;
+}
+body.dark::after {
+  animation: gradientMove 5s infinite alternate;
+  opacity: 1;
+  background-size: 400% 400%;
+
+}
+
+/* PACMAN */
+
+.relative-pacman {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Pacman */
+.item {
+  /* position: absolute; */
+  height: 15px;
+  width: 15px;
+  offset-path: inset(-2%); /* Jalur kotak 410x410 */
+  animation: move 12s linear infinite;
+            animation-composition: accumulate;
+
+}
+   .item:nth-child(2) { offset-distance: 20%; }
+.item:nth-child(3) { offset-distance: 40%; }
+.item:nth-child(4) { offset-distance: 60%; }
+.item:nth-child(5) { offset-distance: 80%; }
+
+.initem {
+  border-left: 40px solid red;
+  border-top: 40px solid red;
+  border-bottom: 40px solid red;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  animation: pacman 0.2s infinite step-end;
+}
+
+
+@keyframes move {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+@keyframes pacman {
+  0% { border-right: 40px solid transparent; }
+  50% { border-right: 40px solid red; }
+}
+
+@media (max-width:375px) {
+    .item:nth-child(2) { offset-distance: 20%; }
+.item:nth-child(3) { offset-distance: 40%; }
+.item:nth-child(4) { offset-distance: 60%; }
+.item:nth-child(5) { offset-distance: 80%; }
+}
