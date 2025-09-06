@@ -11,7 +11,7 @@ html{
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(-45deg, #e1ffff, #84b5ff);
-  animation: gradientMove 5s ease infinite;
+  animation: gradientMove 20s ease infinite;
   overflow-x: hidden;
   transition:all .5s linear;
 }
@@ -41,7 +41,7 @@ header{
     opacity: .5
 }
 .hamburger-line{
-    @apply w-[30px] h-[2px] my-2 block bg-dark;
+    @apply w-[30px] h-[2px] my-2 block bg-dark dark:bg-primary;
 }
 
 #hamburger.hamburger-active > span:nth-child(1){
@@ -59,7 +59,7 @@ header{
     color: transparent;
     background-clip: text;
     background-size: 400% 400%;
-    animation: gradientMove 5s infinite alternate;
+    animation: gradientMove 20s infinite alternate;
     transition: .5s ease;
 }
 #name:hover{
@@ -121,10 +121,10 @@ header{
 
 /* Animasi wave bergerak */
 .wave-motion {
-  animation: waveMotionUp 12s alternate infinite;
+  animation: waveMotionUp 2s alternate infinite;
 }
 .wave-flip {
-   animation: waveMotionDown 12s alternate-reverse infinite;
+   animation: waveMotionDown 2s alternate-reverse infinite;
 }
 @keyframes waveMotionUp {
   0% {
@@ -165,11 +165,11 @@ body::before, body::after {
 }
 
 body::before {
-  background: linear-gradient(-45deg, #e1ffff, #84b5ff);
+  background: linear-gradient(-45deg, #e1ffff, #66a3fd);
   opacity: 1;
   background-size: 400% 400%;
 
-  animation: gradientMove 5s infinite alternate;
+  animation: gradientMove 20s infinite alternate;
 }
 
 body::after {
@@ -177,7 +177,7 @@ body::after {
   opacity: 0;
   background-size: 400% 400%;
 
-  animation: gradientMove 5s infinite alternate;
+  animation: gradientMove 20s infinite alternate;
 }
 
 /* Saat dark mode (misalnya body.dark) */
@@ -185,10 +185,10 @@ body.dark::before {
   opacity: 0;
   background-size: 400% 400%;
 
-  animation: gradientMove 5s infinite alternate;
+  animation: gradientMove 20s infinite alternate;
 }
 body.dark::after {
-  animation: gradientMove 5s infinite alternate;
+  animation: gradientMove 20s infinite alternate;
   opacity: 1;
   background-size: 400% 400%;
 
@@ -207,7 +207,7 @@ body.dark::after {
   /* position: absolute; */
   height: 15px;
   width: 15px;
-  offset-path: inset(-2%); /* Jalur kotak 410x410 */
+  offset-path: inset(0%); /* Jalur kotak 410x410 */
   animation: move 12s linear infinite;
             animation-composition: accumulate;
 
@@ -240,8 +240,14 @@ body.dark::after {
 }
 
 @media (max-width:375px) {
-    .item:nth-child(2) { offset-distance: 20%; }
-.item:nth-child(3) { offset-distance: 40%; }
-.item:nth-child(4) { offset-distance: 60%; }
-.item:nth-child(5) { offset-distance: 80%; }
+    .item{
+      offset-path: inset(4%);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

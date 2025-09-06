@@ -1,22 +1,45 @@
 
 feather.replace(); // Feather icons
-
-// --- Navbar awal ---
 const header = document.querySelector("header");
+const toTop = document.getElementById('to-top');
+const typedText = document.getElementById("typed-text");
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+const darkToggle = document.getElementById('dark-toggle');
+const body = document.querySelector('body');
+const html = document.querySelector('html');
+// --- Navbar awal ---
 header.classList.add("navbar-white");
 
 // --- Efek ketik ---
-const typedText = document.getElementById("typed-text");
 const words = ["Web Developer", "Student", "Gamer", "NPC"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
+// function type() {
+//   const currentWord = words[wordIndex];
+//   const currentText = currentWord.substring(0, charIndex);
+//   typedText.textContent = currentText;
+
+//   if (!isDeleting && charIndex < currentWord.length) {
+//     charIndex++;
+//     setTimeout(type, 100);
+//   } else if (isDeleting && charIndex > 0) {
+//     charIndex--;
+//     setTimeout(type, 60);
+//   } else {
+//     isDeleting = !isDeleting;
+//     if (!isDeleting) wordIndex = (wordIndex + 1) % words.length;
+//     setTimeout(type, 3000);
+//   }
+// }
 function type() {
   const currentWord = words[wordIndex];
   const currentText = currentWord.substring(0, charIndex);
-  typedText.textContent = currentText;
-
+  if (typedText.textContent !== currentText) {
+    typedText.textContent = currentText;
+  }
   if (!isDeleting && charIndex < currentWord.length) {
     charIndex++;
     setTimeout(type, 100);
@@ -35,8 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --- Hamburger menu ---
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("nav-menu");
 
 hamburger.addEventListener("click", function () {
   hamburger.classList.toggle("hamburger-active");
@@ -99,7 +120,6 @@ const animateObserver = new IntersectionObserver(
 document.querySelectorAll("[data-animate]").forEach((el) => {
   animateObserver.observe(el);
 });
-const toTop = document.getElementById('to-top')
 // --- Fixed header saat scroll ---
 let scrollTimeout;
 window.onscroll = function () {
@@ -127,9 +147,6 @@ window.onscroll = function () {
 
 
 // DARK MODE TOGGLE
-const darkToggle = document.getElementById('dark-toggle')
-const body = document.querySelector('body')
-const html = document.querySelector('html')
 let selectedTheme 
 selectedTheme = localStorage.getItem('theme')
 console.log(selectedTheme)
@@ -154,3 +171,14 @@ function switchTheme(theme){
   }
 }
 switchTheme(selectedTheme)
+
+
+// black
+function debounce(func, wait = 100) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+

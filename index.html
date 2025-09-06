@@ -15,9 +15,8 @@
     <div class="flex px-4 items-center justify-between relative">
       <div class="flex items-center my-2">
         <a href="#home">
-          <img src="img/favicon.ico" alt="logo" width="50" height="50" class="rounded-full cursor-pointer"/>
+          <img src="img/favicon.ico" loading="lazy" alt="logo" width="50" height="50" class="rounded-full cursor-pointer"/>
         </a>
-        <!-- Hamburger -->
         <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 xl:hidden">
           <span class="hamburger-line transition-all duration-300 ease-in-out origin-top-left"></span>
           <span class="hamburger-line transition-all duration-300 ease-in-out"></span>
@@ -57,13 +56,13 @@
         <section id="home" class="pt-36 observe opacity-0 translate-y-10 transition-all duration-700 ease-out" data-animate>
           <div class="container">
             <div class="flex flex-wrap">
-              <div class="w-full self-center px-4 lg:w-1/2 mb-10">
+              <div class="w-full self-center px-4 lg:w-1/3 mb-10">
                 <h1
                 class="text-base font-bold text-primary md:text-xl lg:text-2xl"
             >
             Hello There 👋👀,My name is
             <span
-            id="title-name"
+            id="name"
             class="block text-secondary text-4xl font-extrabold md:text-4xl lg:text-5xl my-2"
             >Feng Liuz.ng</span
             >
@@ -75,12 +74,12 @@
               >
             </h2>
             <p class="font-semibold text-dark dark:text-white duration-300 transition-colors mb-5 leading-relaxed">
-              I was going to take over the World! But... i overslept. Again and
+              I was going to take over the World! But... i was overslept. Again and
               again..😒
             </p>
 
             <a
-            href=""
+            href="#contact"
             class="text-base font-semibold bg-primary py-3 px-5 rounded-md text-white hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
               >Contact Me!</a
             >
@@ -96,12 +95,15 @@
                     <img
                       width="400"
                       height="400"
+                      loading="lazy"
                       src="img/pengliut-removebg-preview.png"
                       style="border-radius: 50px;"
                       alt="Feng Liuz Ng"
                       class="relative z-20"
                     />
-      
+                  <p class="absolute left-28 top-16 z-[9999999999] text-center text-sm font-medium text-white dark:text-white lg:hidden animate-bounce">
+  👆 Click Me
+</p>
                     <span
                       class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-full md:scale-125"
                     >
@@ -158,25 +160,28 @@
     <section id="about" class=" pb-32 observe opacity-0 translate-y-10 transition-all duration-700 ease-out" data-animate>
       <div class="container">
         <div class="flex flex-wrap">
-          <div class="w-full px-4 mb-10 lg:w-1/2">
+          <div class="w-full px-4 mb-2 lg:mb-10 lg:w-1/3">
             <h4 class="text-primary font-bold uppercase mb-3">About Me</h4>
             <h2 class="lg:text-4xl text-3xl font-bold text-dark mb-5 max-w-xl  dark:text-white duration-300 transition-colors">
-              Short Story
+              Why Web  ?
             </h2>
-            <p class="font-medium text-base text-tripery max-w-xl dark:text-slate-300 duration-300 transition-colors">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
-              veniam ratione? Necessitatibus vel, impedit est rerum officiis
-              perspiciatis, natus sequi voluptate voluptatem inventore vero
-              assumenda commodi recusandae optio veniam similique!Lorem Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Autem enim ut
-              exercitationem quia asperiores doloremque officia natus facilis
-              nemo illo incidunt provident earum, molestiae necessitatibus
-              illum. At aliquam praesentium vel!
+            <p class="font-semibold text-base text-tripery max-w-xl dark:text-slate-300 duration-300 transition-colors">
+              Hello, You can call me Feng Li or just Feng . I know right, my name is pretty weird ,But the mean of it is prosperity and balance. So, I am a vocational high school student majoring in computer network engineering. Then why did I end up in the web field,which is usually pursued by software engineering majors? I'm also confused the initial reason was because of a student competency competition held at both the provincial and national levels. My teacher and seniors offered me two fields: Information Technology Software Solutions for Business and Web Technology.To be honest, I wanted to choose ITSSB because I thought it involved making game applications (even though it actually involves business applications) that I usually play on my phone. However, they told me to take Web Technology instead, as it is more exciting and includes games, as it is more exciting and has games. September 2024 was the first time I touched HTML. Everything was fun until I started learning JavaScript and PHP. That’s when I realized it wasn't as enjoyable as they said💀.
             </p>
           </div>
-          <div class="lg:w-1/2 w-full px-4 mt-10 flex text-center items-center justify-center">
-            <h1 class="text-7xl lg:text-9xl font-extrabold" id="name">FENGLI</h1>
+          <div class="w-full px-4 mb-2 lg:mb-10 lg:w-1/3">
+          
+            <p class="font-semibold pt-4 lg:pt-24 text-base text-tripery max-w-xl dark:text-slate-300 duration-300 transition-colors">
+               Because I had already committed, I forced myself to study it even though my logic didn't connect until around January 2025. That's when I started to wonder if I could pursue this field. However, when I began to delve deeper into the Laravel tech stack, I started to feel alive again as this was the best part of myself in this field, becoming a backend developer. After that, I learned React, and as I expected, frontend development was too difficult for me. One month before the competition, I studied tirelessly because I didn’t want to waste the months I had spent. Four days before the competition, the exam modules were almost 180 degrees different from what I had practiced, but I still tried to stay positive thinking that it was just a guideline and not the actual exam. That was my biggest mistake. On Day 1 of the competition, the modules used were from the guidelines; my face went pale and weak when I saw those modules. I did my best with the abilities I had.
+            </p>
           </div>
+          <div class="w-full px-4 mb-2 lg:mb-10 lg:w-1/3">
+          
+             <p class="font-semibold pt-4 lg:pt-24 text-base text-tripery max-w-xl dark:text-slate-300 duration-300 transition-colors">
+              The second module fortunately I could work on with 100% specification, and after that went home to prepare for the third module tomorrow, because for both previous modules according to my study guide I also studied the third module, I studied hard all night, I focused on the backend part because that is what I am best at, for the frontend I leave it to God Almighty 😁. And the next day I managed to work on 75% of the backend because the competition did not provide any collections or databases at all 😊, a bit shocking because usually they are already available. The frontend part, as I had expected, only included the login and register pages, but I should have been able to do more because the competition time suddenly was 3 hours, even though we were informed yesterday that it would be 6 hours, I don’t know why it was like that, and on the night of the announcement I was very nervous. Win or die was on my mind at that time, and with God's grace and all my efforts, I finally managed to win a gold medal. That is the end of the story.
+            </p>
+          </div>
+        
         </div>
       </div>
     </section>
@@ -207,14 +212,13 @@
         </h4>
         <h2 class="text-3xl font-bold text-dark dark:text-white transition-colors duration-300 mb-4">Latest Projects</h2>
         <p class="font-medium text-tripery dark:text-slate-100 transition-colors duration-300 ">
-          There's no main project for me yet, but I have a few projects you can check on my GitHub. Maybe later I'll add more 🗿
+          There's no main project from me yet, but I have some few projects you can check it on my GitHub. Maybe later I'll add it more 🗿
         </p>
       </div>
     </div>
 
     
     <div class="w-full px-4 flex flex-wrap justify-center">
-      <!-- Pacman animasi keliling -->
       <div class="relative-pacman">
         <div class="item"><div class="initem"></div></div>
         <div class="item"><div class="initem"></div></div>
@@ -222,7 +226,6 @@
         <div class="item"><div class="initem"></div></div>
         <div class="item"><div class="initem"></div></div>
       </div>
-      <!-- Projects grid -->
     </div>
   </div>
 </section>
@@ -408,8 +411,8 @@
                       </svg>
                     </a>
                     <a
-                      href=""
-                      target=""
+                      href="https://wa.me/6281279993183"
+                      target="_blank"
                       class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border-2 border-tripery hover:border-blue-500 hover:bg-primary hover:text-white transition-all duration-300 dark:text-white dark:hover:text-dark""
                     >
                       <svg
