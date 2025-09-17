@@ -239,20 +239,16 @@ body.dark::after {
   50% { border-right: 40px solid red; }
 }
 
-@media (max-width:375px) {
+@media (max-width:500px) {
 html, body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
 }
 
-img, svg {
-  /* max-width: 100%; */
-  height: auto;
-}
-
     .item{
-      offset-path: inset(4%);
+      opacity: .5;
+      offset-path: inset(10%);
     }
 }
 @media (prefers-reduced-motion: reduce) {
