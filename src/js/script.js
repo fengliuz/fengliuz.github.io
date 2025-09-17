@@ -108,7 +108,7 @@ const animateObserver = new IntersectionObserver(
   (entries, obs) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.remove("opacity-0", "translate-y-10");
+        entry.target.classList.remove("opacity-0", "translate-y-10",'invisible');
         entry.target.classList.add("opacity-100", "translate-y-0");
         obs.unobserve(entry.target); // animasi sekali saja
       } 
@@ -149,7 +149,6 @@ window.onscroll = function () {
 // DARK MODE TOGGLE
 let selectedTheme 
 selectedTheme = localStorage.getItem('theme')
-console.log(selectedTheme)
 darkToggle.addEventListener('click',()=>{
   if(darkToggle.checked  ){
   localStorage.setItem('theme','dark')
