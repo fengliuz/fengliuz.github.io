@@ -184,7 +184,7 @@ function debounce(func, wait = 100) {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const skillCards = document.querySelectorAll(".skill-card");
 
-let activeCategories = new Set(); // multiple active filters
+let activeCategories = new Set(); // allow multiple active filters
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -195,7 +195,7 @@ filterButtons.forEach((button) => {
       button.classList.toggle("active");
 
       if (button.classList.contains("active")) {
-        activeCategories.clear(); // clear other filters
+        activeCategories.clear(); // clear others
         filterButtons.forEach((btn) => {
           if (btn !== button) btn.classList.remove("active", "bg-blue-600");
         });
@@ -232,11 +232,19 @@ filterButtons.forEach((button) => {
 });
 
 function showAll() {
-  skillCards.forEach((card) => card.classList.remove("hidden", "opacity-0"));
+  skillCards.forEach((card) => {
+    card.classList.remove("hidden");
+    void card.offsetWidth; // reflow for transition
+    card.classList.add("show");
+  });
 }
 
 function hideAll() {
-  skillCards.forEach((card) => card.classList.add("hidden", "opacity-0"));
+  skillCards.forEach((card) => {
+    card.classList.remove("show");
+    card.classList.add("opacity-0");
+    setTimeout(() => card.classList.add("hidden"), 400);
+  });
 }
 
 function filterSkills() {
@@ -252,38 +260,42 @@ function filterSkills() {
 
     if (activeCategories.has(cardCategory)) {
       card.classList.remove("hidden");
-      setTimeout(() => card.classList.remove("opacity-0"), 50);
+      void card.offsetWidth; // reflow for animation
+      card.classList.add("show");
+      card.classList.remove("opacity-0");
     } else {
+      card.classList.remove("show");
       card.classList.add("opacity-0");
-      setTimeout(() => card.classList.add("hidden"), 300);
+      setTimeout(() => card.classList.add("hidden"), 400);
     }
   });
 }
 
-// 🎨 Modal logic (same as before)
+// 🎨 Modal logic
 const modal = document.createElement("div");
 modal.className =
   "fixed inset-0 bg-black/70 hidden items-center justify-center z-[9999]";
 modal.innerHTML = `
-    <div class="bg-slate-800 text-white rounded-xl p-8 w-[90%] max-w-md relative shadow-lg animate-fadeIn">
-      <button id="close-modal" class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
-      <h3 id="modal-title" class="text-2xl font-bold text-blue-400 mb-2"></h3>
-      <p id="modal-desc" class="text-gray-300 mb-6"></p>
-      <div class="flex flex-col items-center">
-        <svg id="circle-progress" width="120" height="120" class="transform -rotate-90">
-          <circle cx="60" cy="60" r="50" stroke="gray" stroke-width="10" fill="none" />
-          <circle id="progress-bar" cx="60" cy="60" r="50" stroke="#3b82f6" stroke-width="10" stroke-linecap="round" fill="none"
-            stroke-dasharray="314" stroke-dashoffset="314" />
-        </svg>
-        <div id="percent-text" class="text-2xl font-semibold mt-4 text-blue-400">0%</div>
-      </div>
+  <div class="bg-slate-800 text-white rounded-xl p-8 w-[90%] max-w-md relative shadow-lg animate-fadeIn">
+    <button id="close-modal" class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
+    <h3 id="modal-title" class="text-2xl font-bold text-blue-400 mb-2"></h3>
+    <p id="modal-desc" class="text-gray-300 mb-6"></p>
+    <div class="flex flex-col items-center">
+      <svg id="circle-progress" width="120" height="120" class="transform -rotate-90">
+        <circle cx="60" cy="60" r="50" stroke="gray" stroke-width="10" fill="none" />
+        <circle id="progress-bar" cx="60" cy="60" r="50" stroke="#3b82f6" stroke-width="10" stroke-linecap="round" fill="none"
+          stroke-dasharray="314" stroke-dashoffset="314" />
+      </svg>
+      <div id="percent-text" class="text-2xl font-semibold mt-4 text-blue-400">0%</div>
     </div>
-  `;
+  </div>
+`;
 document.body.appendChild(modal);
 
 const progressBar = modal.querySelector("#progress-bar");
 const percentText = modal.querySelector("#percent-text");
 
+// 🧩 Skill card modal trigger
 document.querySelectorAll(".skill-card").forEach((card) => {
   card.addEventListener("click", () => {
     const name = card.getAttribute("data-name");
@@ -300,19 +312,16 @@ document.querySelectorAll(".skill-card").forEach((card) => {
     const circumference = 314;
     progressBar.style.transition = "none";
     progressBar.style.strokeDashoffset = circumference;
-
-    // Force reflow
     void progressBar.offsetWidth;
 
-    let transitionTime = 0
-    transitionTime =+ (percent / 55 + 1.2)
+    const transitionTime = (percent / 55 + 1.2).toFixed(1);
     setTimeout(() => {
       progressBar.style.transition = `stroke-dashoffset ${transitionTime}s ease-in-out`;
       const offset = circumference - (percent / 100) * circumference;
       progressBar.style.strokeDashoffset = offset;
     }, 100);
 
-    // Animate number
+    // Animate number text
     let current = 0;
     const animateNumber = () => {
       if (current < percent) {
@@ -326,6 +335,7 @@ document.querySelectorAll(".skill-card").forEach((card) => {
   });
 });
 
+// 🧱 Close modal
 modal.querySelector("#close-modal").addEventListener("click", () => {
   modal.classList.add("hidden");
   modal.classList.remove("flex");
