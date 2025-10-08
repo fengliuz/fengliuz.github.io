@@ -1,4 +1,4 @@
-feather.replace(); // Feather icons
+feather.replace()
 const header = document.querySelector("header");
 const toTop = document.getElementById("to-top");
 const typedText = document.getElementById("typed-text");
@@ -234,17 +234,20 @@ filterButtons.forEach((button) => {
 function showAll() {
   skillCards.forEach((card) => {
     card.classList.remove("hidden");
-    void card.offsetWidth; // reflow for transition
-    card.classList.add("show");
+    card.style.display ='block'
+    setTimeout(() => {
+      void card.offsetWidth; // reflow for transition
+      card.classList.add("show");
+    }, 200);
   });
 }
 
 function hideAll() {
   skillCards.forEach((card) => {
     card.classList.remove("show");
-    card.classList.add("opacity-0");
-    setTimeout(() => card.classList.add("hidden"), 400);
-  });
+      card.classList.add("opacity-0");
+      setTimeout(() => card.classList.add("hidden"), 400);
+    });
 }
 
 function filterSkills() {
@@ -260,11 +263,16 @@ function filterSkills() {
 
     if (activeCategories.has(cardCategory)) {
       card.classList.remove("hidden");
-      void card.offsetWidth; // reflow for animation
-      card.classList.add("show");
-      card.classList.remove("opacity-0");
+      card.style.display='block'
+      setTimeout(() => {
+        
+        void card.offsetWidth; // reflow for animation
+        card.classList.add("show");
+        card.classList.remove("opacity-0");
+      }, 200);
     } else {
       card.classList.remove("show");
+      card.classList.add("opacity-0");
       card.classList.add("opacity-0");
       setTimeout(() => card.classList.add("hidden"), 400);
     }
