@@ -304,7 +304,7 @@ html, body {
 
 .skill-card {
   transition: all 0.4s ease-in-out;
-  transform: scale(0.9);
+  transform: scale(0);
   opacity: 0;
 }
 .skill-card.show {

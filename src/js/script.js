@@ -183,7 +183,7 @@ function debounce(func, wait = 100) {
 // Filter Buttons
 const filterButtons = document.querySelectorAll(".filter-btn");
 const skillCards = document.querySelectorAll(".skill-card");
-
+skillCards.forEach(card=>card.classList.add('hidden'))
 let activeCategories = new Set();
 let animationTimers = new Map(); // track animations to cancel later
 
@@ -241,7 +241,6 @@ function hideAll() {
 
 function showCard(card) {
   clearAnimation(card);
-
   card.classList.remove("hidden");
   card.style.opacity = "0";
   card.style.transform = "scale(0.95)";
