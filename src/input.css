@@ -115,7 +115,8 @@ header{
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 0 20px #1d4ed8;
-  background: url('../img/webtek.jpeg') center no-repeat;
+  object-fit: contain;
+  background: url('../img/fengli-cafe.jpg') center no-repeat;
   background-size:cover;
 }
 
